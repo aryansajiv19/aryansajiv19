@@ -8,11 +8,11 @@ What I like to show in my projects isn't only that they work, but *why* they hol
 
 <table>
 <tr>
-<td width="46%"><a href="https://skillverse-sable.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/SkillVerse/main/docs/media/path.jpg" alt="SkillVerse: clicking a star lights up the learning path to it"></a></td>
+<td width="46%"><a href="https://skillverse-sable.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/SkillVerse/main/docs/media/constellations.jpg" alt="SkillVerse: finished learning paths formed as gold constellations on the galaxy map"></a></td>
 <td>
 
 ### [SkillVerse](https://github.com/aryansajiv19/SkillVerse)
-**A personalised learning path, laid out as a galaxy.** Click any skill and the stars you need light up in order, each with a lesson, free resources, practice and a knowledge check.
+**Every learning path is a constellation; the whole curriculum is a galaxy.** Click any skill and the stars you need light up in order, each with a lesson, free resources, practice and a knowledge check. Finish a path and its constellation forms on your map, in a supernova.
 
 - Quizzes are graded inside Postgres, and CI proves the answers never ship to the browser
 - Replaced a quadratic leaderboard query: **5.4 s → 3.4 ms** at 10,000 players
