@@ -1,74 +1,88 @@
 # Aryan Sajiv
 
-Computer Science student at the University of Manchester, in my penultimate year.
+Computer Science undergraduate (penultimate year) at the University of Manchester, focused on full-stack systems, database engineering and applied AI.
 
-I like building things people actually want to open: a learning app that looks like a night sky, a planner that ends the "so where are we going?" group chat, a training coach that knows which muscles are still sore. I'm happiest when an idea turns into something friends can use, and I take projects the whole way, from database design and security to tests, deployment and the small details that make them fun.
+[Email](mailto:aryansajiv2@gmail.com) · [GitHub](https://github.com/aryansajiv19)
 
-Lately I've been most interested in where AI makes software more useful, not just more impressive.
+## Summary
 
-## Projects
+I design and ship production web applications end to end: data modelling and access control in PostgreSQL, APIs and server logic, type-safe React front ends, automated testing and continuous deployment. My projects emphasise measurable performance, explicit security models and test coverage at the database, unit and browser levels.
+
+## Selected projects
 
 <table>
 <tr>
-<td width="46%"><a href="https://skillverse-sable.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/SkillVerse/main/docs/media/constellations.jpg" alt="SkillVerse: finished learning paths formed as gold constellations on the galaxy map"></a></td>
+<td width="44%"><a href="https://skillverse-sable.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/SkillVerse/main/docs/media/constellations.jpg" alt="SkillVerse skill graph with completed learning paths"></a></td>
 <td>
 
 ### [SkillVerse](https://github.com/aryansajiv19/SkillVerse)
-A learning app where every path is a constellation. Pick a skill and the stars you need light up in order, each with a lesson, free resources and a knowledge check. It started at a hackathon; I rebuilt it into a full-stack app.
+Personalised learning paths on an interactive skill graph, with server-graded knowledge checks.
 
-- Quizzes are graded inside Postgres, and CI proves the answers never ship to the browser
-- Replaced a quadratic leaderboard query: **5.4 s → 3.4 ms** at 10,000 players
-- Tested at three layers: database (pgTAP), unit (Vitest) and end-to-end with accessibility scans (Playwright + axe)
+- Quiz grading and mastery in atomic PostgreSQL functions; the answer key is held in an unexposed schema and CI verifies it never reaches the client bundle
+- Replaced a quadratic leaderboard query with a window function: **5.4 s → 3.4 ms** at 10,000 players; **>120 s → 17.6 ms** at 50,000
+- Row-level security with least-privilege and column-level grants, enforced by schema-wide pgTAP invariants in CI
+- 63 database, 220 unit and 19 end-to-end tests, including WCAG 2.1 AA scans
 
-React · TypeScript · Supabase (Postgres, RLS, Realtime) · Three.js · Playwright
-[Live demo](https://skillverse-sable.vercel.app) · [Code](https://github.com/aryansajiv19/SkillVerse)
+React · TypeScript · Supabase (PostgreSQL, RLS, Realtime) · Playwright · pgTAP
+[Live demo](https://skillverse-sable.vercel.app) · [Source](https://github.com/aryansajiv19/SkillVerse)
 
 </td>
 </tr>
 <tr>
-<td width="46%"><a href="https://plan-ind.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/plan-ind/main/docs/media/flow.gif" alt="plan-ind: a group voting through three rounds to a winner"></a></td>
+<td width="44%"><a href="https://plan-ind.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/plan-ind/main/docs/media/flow.gif" alt="Planind group voting through elimination rounds"></a></td>
 <td>
 
-### [plan-ind](https://github.com/aryansajiv19/plan-ind)
-Group plans in Dubai, decided in three rounds instead of three hundred messages. Friends vote on places live, and the plan carries on into RSVPs, carpools and calendar invites.
+### [Planind](https://github.com/aryansajiv19/plan-ind)
+Real-time group decision-making: shortlist venues, vote in elimination rounds, then coordinate the outing.
 
-- Every vote goes through a database function, so nobody can fake or double a vote
-- Search index took a failed search at 5,000 places from **2.26 ms to 0.07 ms**
-- 200 people voting at the same moment finished in **under 250 ms**; 213 Playwright tests
+- Ballots cast only through database functions; concurrent duplicate votes resolve to a single row, verified by race-condition tests
+- Trigram GIN index reduced unmatched venue search from **2.26 ms to 0.07 ms** (30×); 200 simultaneous voters completed in under 250 ms
+- SSRF-hardened URL import with DNS-rebinding protection; LLM search constrained by JSON Schema output and hermetic guardrail tests
+- 380+ unit, 170+ database and cross-browser Playwright tests
 
-Next.js · React 19 · Supabase · OpenAI
-[Live demo](https://plan-ind.vercel.app) · [Code](https://github.com/aryansajiv19/plan-ind)
+Next.js · React 19 · TypeScript · Supabase · OpenAI
+[Live demo](https://plan-ind.vercel.app) · [Source](https://github.com/aryansajiv19/plan-ind)
 
 </td>
 </tr>
 <tr>
-<td width="46%"><a href="https://github.com/aryansajiv19/ASCEND"><img src="https://raw.githubusercontent.com/aryansajiv19/ASCEND/main/docs/dashboard.png" alt="ASCEND dashboard with per-muscle recovery scores"></a></td>
+<td width="44%"><a href="https://github.com/aryansajiv19/ASCEND"><img src="https://raw.githubusercontent.com/aryansajiv19/ASCEND/main/docs/dashboard.png" alt="ASCEND dashboard with per-muscle recovery scores"></a></td>
 <td>
 
 ### [ASCEND](https://github.com/aryansajiv19/ASCEND)
-AI fitness coaching that knows how recovered each muscle is. Describe a workout in plain words and it gets logged; the coach answers with your full training history in view.
+AI fitness coaching with per-muscle recovery scoring, natural-language logging and live challenges.
 
-- Per-muscle recovery scores computed from training volume and recency
-- An LLM coach with access to your workouts, plus voice logs parsed into structured data
-- Live challenges and leaderboards over WebSockets, with full-text workout search
+- Deterministic recovery model over seven days of training volume and elapsed time
+- Streaming LLM coach grounded in the user's workout history and recovery state
+- Natural-language logging parsed into validated structured records
+- Real-time challenge leaderboards over WebSockets; containerised with Docker
 
-Node.js · Express · PostgreSQL + pgvector · React · Claude · Docker
-[Code](https://github.com/aryansajiv19/ASCEND)
+Node.js · Express · PostgreSQL · React · Claude · Docker
+[Source](https://github.com/aryansajiv19/ASCEND)
 
 </td>
 </tr>
 </table>
 
-## What I work with
+### Other work
 
-- **Web:** TypeScript, React and Next.js, with Node.js and Express on the server
-- **Data:** PostgreSQL (row-level security, triggers, full-text search, pgvector, query tuning with `EXPLAIN ANALYZE`) and Supabase
-- **AI:** products built on Claude, OpenAI and Gemini, from tutors and coaches to turning plain English into structured data
-- **Quality and shipping:** Vitest, Playwright, pgTAP, axe, GitHub Actions, Docker, Vercel
-- **Languages:** TypeScript, JavaScript, Python, SQL
+| Project | Description |
+|---|---|
+| [MU0 Memory Game](https://github.com/aryansajiv19/MU0-memory-game) | Interactive game in MU0 assembly using memory-mapped keypad, display, LED and buzzer I/O on an eight-instruction processor |
+| [Automobile Management System](https://github.com/aryansajiv19/Automobile-Management-System) | Command-line dealership records system with pandas, MySQL and matplotlib |
+
+## Technical skills
+
+| Area | Tools |
+|---|---|
+| Languages | TypeScript, JavaScript, Python, SQL |
+| Front end | React, Next.js, Tailwind CSS, Vite |
+| Back end | Node.js, Express, Supabase (Auth, Realtime, Edge Functions), REST, WebSockets |
+| Databases | PostgreSQL: row-level security, PL/pgSQL, triggers, indexing, full-text and trigram search, pgvector, query analysis with `EXPLAIN ANALYZE` |
+| AI | OpenAI, Anthropic Claude and Gemini APIs; structured outputs, streaming, evaluation |
+| Testing | Vitest, Playwright, pgTAP, axe accessibility testing, load testing |
+| Delivery | GitHub Actions, Docker, Vercel |
 
 ## Contact
 
-Always up for a chat about AI, side projects, hackathons or roles where I can build things like these.
-
-[aryansajiv2@gmail.com](mailto:aryansajiv2@gmail.com)
+Open to software engineering internships and graduate opportunities. Reach me at [aryansajiv2@gmail.com](mailto:aryansajiv2@gmail.com).
