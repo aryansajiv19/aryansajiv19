@@ -14,7 +14,7 @@ I build applications end to end, from schema design and access control in Postgr
 
 <a href="https://github.com/aryansajiv19/Tip-of-the-Tongue"><img src="https://raw.githubusercontent.com/aryansajiv19/Tip-of-the-Tongue/main/docs/assets/demo.gif" alt="Tip of the Tongue overlay offering the word a speaker stalled on" width="640"></a>
 
-A live word-finding companion for people who lose words mid-conversation: it listens, notices when the speaker stalls, and offers the likely word in a small overlay, staying silent otherwise. Hiya Voice AI Challenge entry, Accessibility track.
+A live word-finding companion for people who lose words mid-conversation: it listens, notices when the speaker stalls, and offers the likely word in a small overlay, staying silent otherwise. Hiya Voice AI Challenge entry, Real-time Assistance track.
 
 - A speculative guess starts about 0.3 s into a pause, so the word appears about 1.5 s after the last spoken word; a confidence gate keeps it quiet on fluent speech (0–1 pop-ups in 165 fluent lines).
 - A prompt pass raised accuracy from 85–90% to 93–96% across 20 scripted conversations, and 94% on a held-out set it was never tuned on.
