@@ -10,6 +10,18 @@ I build applications end to end, from schema design and access control in Postgr
 
 ## Selected projects
 
+### [Tip of the Tongue](https://github.com/aryansajiv19/Tip-of-the-Tongue)
+
+<a href="https://github.com/aryansajiv19/Tip-of-the-Tongue"><img src="https://raw.githubusercontent.com/aryansajiv19/Tip-of-the-Tongue/main/docs/assets/demo.gif" alt="Tip of the Tongue overlay offering the word a speaker stalled on" width="640"></a>
+
+A live word-finding companion for people who lose words mid-conversation: it listens, notices when the speaker stalls, and offers the likely word in a small overlay, staying silent otherwise. Hiya Voice AI Challenge entry, Accessibility track.
+
+- A speculative guess starts about 0.3 s into a pause, so the word appears about 1.5 s after the last spoken word; a confidence gate keeps it quiet on fluent speech (0–1 pop-ups in 165 fluent lines).
+- A prompt pass raised accuracy from 85–90% to 93–96% across 20 scripted conversations, and 94% on a held-out set it was never tuned on.
+- Speaker diarisation decides whose pauses count, the pause threshold adapts to each speaker's pace, and the pipeline recovers from network drops, sleep and microphone changes.
+
+TypeScript, Node.js (Fastify, WebSockets), React, Electron, Deepgram Nova-3, Claude Haiku, Vitest, Playwright
+
 ### [SkillVerse](https://github.com/aryansajiv19/SkillVerse)
 
 <a href="https://skillverse-sable.vercel.app"><img src="https://raw.githubusercontent.com/aryansajiv19/SkillVerse/main/docs/media/constellations.jpg" alt="SkillVerse skill graph with completed learning paths" width="640"></a>
@@ -52,9 +64,9 @@ Node.js, Express, PostgreSQL, React, Claude, Docker
 ## Stack
 
 **Languages:** TypeScript, JavaScript, Python, SQL  
-**Frontend:** React, Next.js, Tailwind CSS  
+**Frontend:** React, Next.js, Tailwind CSS, Electron  
 **Backend:** Node.js, Express, Supabase, PostgreSQL (RLS, PL/pgSQL, triggers, indexing)  
-**AI:** OpenAI, Claude and Gemini APIs, structured outputs  
+**AI:** OpenAI, Claude and Gemini APIs, structured outputs, Deepgram speech-to-text  
 **Testing:** Vitest, Playwright, pgTAP  
 **Infrastructure:** GitHub Actions, Docker, Vercel
 
